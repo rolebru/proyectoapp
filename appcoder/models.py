@@ -6,11 +6,17 @@ class Curso(models.Model):
     nombre = models.CharField(max_length=30 )
     comision = models.IntegerField()
 
+    def __str__(self) -> str:
+        return f'Nombre del Curso: {self.nombre} - Nombre de la comision : {self.comision}'
+
 class Estudiante(models.Model):
     
     nombre = models.CharField(max_length=30 )
     apellido = models.CharField(max_length=30)
     email = models.EmailField()
+
+    def __str__(self) -> str:
+        return f'Nombre : {self.nombre} - Apellido : {self.apellido} - Email : {self.email}'
 
 class Profesor(models.Model):
 
