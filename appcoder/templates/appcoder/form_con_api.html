@@ -1,0 +1,17 @@
+{% extends "appcoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %} Formulario con api {% endblock  %}
+
+{% block contenidoQueCambia %}
+
+    <form actions="" method="POST">
+        {% csrf_token %} 
+        <table>
+            {{ miFormulario.as_table }}
+        </table>
+        <input type="submit" value="Enviar">
+    </form>
+    
+{% endblock  %}
