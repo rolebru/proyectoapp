@@ -13,4 +13,5 @@ urlpatterns = [
     path('formularios', curso_formulario, name="formularios"),
     path('form-con-api', form_con_api, name="FormConApi"),
     path('profesorFormulario', profesorFormulario, name="profeformulario"),
+    path('estudianteFormulario', estudianteFormulario, name="estudiformulario"),
 ]

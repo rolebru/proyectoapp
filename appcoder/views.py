@@ -4,10 +4,11 @@ from django.http import HttpResponse
 from.models import Curso
 from appcoder.models import Curso
 from appcoder.models import Profesor
+from appcoder.models import Estudiante
 
 from appcoder.forms import CursoFormulario
 from appcoder.forms import ProfesorFormulario
-
+from appcoder.forms import EstudianteFormulario
 
 
 # Create your views here.
@@ -74,6 +75,22 @@ def profesorFormulario(request):
             miFormulario = ProfesorFormulario()
 
     return render(request, "appcoder/profesorFormulario.html", {"miFormulario": miFormulario})
+
+
+def estudianteFormulario(request):
+    if request.method == "POST":
+        miFormulario = Estudiante(request.POST) # Aqui me llega la informacion del html
+            # print(miFormulario)
+
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+            estudiante = Estudiante (nombre=informacion["nombre"], apellido=informacion["apellido"], email=informacion["email"],)
+            estudiante.save()
+            return render(request, "appcoder/inicio.html")
+    else:
+            miFormulario = EstudianteFormulario()
+
+    return render(request, "appcoder/estudianteFormulario.html", {"miFormulario": miFormulario})
 
 
 
